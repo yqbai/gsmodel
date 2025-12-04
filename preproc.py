@@ -8,7 +8,7 @@ os.chdir('data2024.v2')
 n_extend_plan = 50
 seqlen = 20
 
-mat_columnanno = pd.read_csv('/home/baiyq/projects/brain_folding/data2024/column2annot_man_res_corrected.csv')
+mat_columnanno = pd.read_csv('data2024/column2annot_man_res_corrected.csv')
 samplelist_all = np.unique(mat_columnanno['section'])
 samplelist2 = list(pd.read_csv('samplelist_test.txt').loc[:,'x'])
 samplelist = np.setdiff1d(samplelist_all, samplelist2 + ['T114','T145'])
