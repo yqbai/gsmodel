@@ -57,7 +57,7 @@ features = torch.tensor(embeddings2.permute(0,2,1), dtype=torch.float32)
 labels = torch.tensor(contingency_table2, dtype=torch.float32)
 
 pca = PCA(n_components=1)
-features_np = features.numpy().reshape(features.shape[0], -1)  # Flatten features for PCA
+features_np = features.numpy().reshape(features.shape[0], -1)
 pc1_values = pca.fit_transform(features_np).flatten()
 pc1_min = np.percentile(pc1_values, 10)
 pc1_max = np.percentile(pc1_values, 90) 
@@ -90,9 +90,9 @@ train_dataset, test_dataset = random_split(dataset, [train_size, test_size])
 train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False)
 
-input_channels = features.shape[1]  # 264
-seq_len = features.shape[2]         # 20
-output_dim = labels.shape[1]        # 150
+input_channels = features.shape[1]
+seq_len = features.shape[2]
+output_dim = labels.shape[1]
 
 import torch.nn.functional as F
 
@@ -111,7 +111,6 @@ for epoch in range(num_epochs):
     for inputs, targets in train_loader:
         optimizer.zero_grad()
         outputs = model(inputs)
-        #loss = criterion(outputs, targets)
         loss = cosine_similarity_loss(outputs, targets)
         loss.backward()
         optimizer.step()
