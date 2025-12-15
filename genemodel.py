@@ -159,7 +159,6 @@ y = labels_np[:,1]
 model = LogisticRegression(max_iter=1000, solver='lbfgs')
 model.fit(X, y)
 prob = model.predict_proba(X)
-prob_withnames = np.column_stack((samplenames, prob))
 
 summed_features = torch.sum(new_features_np, dim=1)
 X = summed_features
