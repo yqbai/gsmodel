@@ -122,7 +122,7 @@ def prepare_input_expr(samplelist, seqlen = 20, topn = 30, filter = ''):
             Labels += labels
             Samplenames += samplenames
     if Features:
-        Features = torch.cat(Features, dim=0)  # Concatenate tensors
+        Features = torch.cat(Features, dim=0)
     else:
         Features = None
     return Features, Labels, Samplenames
