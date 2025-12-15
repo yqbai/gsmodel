@@ -140,7 +140,6 @@ def encode_onehot(labels):
 
 topn = 50
 filter = ''
-#filter = ['','EX_L23','EX_L4','EX_L6','IN','NonNeuron']
 tag = f"topmarker_{topn}"
 print(tag)
 features_np, labels, samplenames = prepare_input_expr(samplelist, seqlen, topn, filter = filter)
