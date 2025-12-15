@@ -148,3 +148,22 @@ new_features_np, new_labels, _ = prepare_input_expr(samplelist2, seqlen, topn, f
 labels_np = torch.FloatTensor(encode_onehot(labels))
 new_labels_np = torch.FloatTensor(encode_onehot(new_labels))
 
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader, TensorDataset
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
+
+summed_features = torch.sum(features_np, dim=1)
+X = summed_features
+y = labels_np[:,1]
+model = LogisticRegression(max_iter=1000, solver='lbfgs')
+model.fit(X, y)
+prob = model.predict_proba(X)
+prob_withnames = np.column_stack((samplenames, prob))
+
+summed_features = torch.sum(new_features_np, dim=1)
+X = summed_features
+y = new_labels_np[:,1]
+preds = model.predict(X)
