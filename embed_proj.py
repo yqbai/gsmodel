@@ -100,7 +100,6 @@ def cosine_similarity_loss(output, target):
     return 1 - F.cosine_similarity(output, target, dim=1).mean()
 
 model = CNNModel(input_channels=input_channels, seq_len=seq_len, output_dim=output_dim)
-criterion = nn.MSELoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=3, verbose=True)
 
