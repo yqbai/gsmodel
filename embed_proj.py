@@ -10,10 +10,6 @@ import scipy.sparse as sp
 import matplotlib.pyplot as plt
 import torch.optim as optim
 from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
-from transformers import BertModel, BertConfig
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 import statistics
 from torch.optim.lr_scheduler import ReduceLROnPlateau
